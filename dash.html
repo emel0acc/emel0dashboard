@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon">
+    <title>emel0 dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- LOGIN SECTION -->
+    <section id="login-section" class="centered">
+        <div class="login-box">
+            <h2>Dashboard Login</h2>
+            <p class="hint">Enter your username and password to continue.</p>
+
+            <input type="email" id="email-input" placeholder="email">
+            <input type="password" id="password-input" placeholder="Password">
+            <button id="login-btn">Login</button>
+
+            <p id="login-error" class="error"></p>
+        </div>
+    </section>
+
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard-section" class="hidden">
+        <header class="dash-header">
+            <h1>Release Dashboard</h1>
+            <button id="logout-btn">Logout</button>
+        </header>
+
+        <div class="dash-container">
+
+            <!-- Add New Release -->
+            <div class="panel">
+                <h2>Add New Release</h2>
+
+                <input type="text" id="title" placeholder="Title">
+
+                <select id="type">
+                    <option value="single">Single</option>
+                    <option value="ep">EP</option>
+                    <option value="album">Album</option>
+                </select>
+
+                <input type="date" id="release-date">
+
+                <textarea id="description" placeholder="Description (optional)"></textarea>
+
+                <input type="text" id="cover-url" placeholder="Cover Image URL">
+                <input type="text" id="embed-url" placeholder="Embed URL (Spotify/Bandcamp)">
+                <input type="text" id="spotify" placeholder="Spotify Link">
+                <input type="text" id="apple" placeholder="Apple Music Link">
+                <input type="text" id="bandcamp" placeholder="Bandcamp Link">
+                <input type="text" id="deezer" placeholder="Deezer Link">
+                <input type="text" id="tidal" placeholder="tidal Link">
+
+                <button id="submit-release">Add Release</button>
+                <p id="submit-msg" class="message"></p>
+            </div>
+
+
+            <!-- Existing Releases -->
+            <div class="panel">
+                <h2>Existing Releases</h2>
+                <div id="release-list" class="release-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SUPABASE CLIENT -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+        const supabaseUrl = "https://fqufsdzxfpskjkuyirpy.supabase.co";
+        const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZxdWZzZHp4ZnBza2prdXlpcnB5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwODgxNzQsImV4cCI6MjA3ODY2NDE3NH0.CNOmmFogtA_1o86Uz3zc8Y9eh3O1lVHlbmkeCQWiRpg";
+        const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+    </script>
+
+    <script src="dash.js"></script>
+</body>
+</html>
